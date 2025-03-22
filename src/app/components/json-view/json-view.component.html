@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="sidebar">
+    <label for="serverUrl">Server URL:</label>
+    <input [(ngModel)]="serverUrl" id="serverUrl" placeholder="Enter server URL" />
+    <button (click)="connect()">Connect to Server</button>
+
+    <label for="groupSelect">Select Group:</label>
+    <select [(ngModel)]="selectedGroup" (change)="loadActions()" id="groupSelect">
+      <option *ngFor="let group of groups" [value]="group">{{ group }}</option>
+    </select>
+  </div>
+
+  <div class="content">
+    <!-- Actions List -->
+    <div class="actions-list">
+      <div *ngFor="let action of actions" class="action">
+        <div class="action-header" (click)="toggleAction(action)">
+          <strong>{{ action.actionName }}</strong>
+        </div>
+        <div *ngIf="action.expanded" class="action-details">
+          <pre>{{ action | json }}</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Area (chatbot style) --><div class="chat-container">
+    <div class="chat-box">
+      <div *ngFor="let message of chatMessages; let i = index" class="chat-message" [ngClass]="message.sender">
+
+        <!-- Check if methodname and jsonStr are not empty -->
+        <div *ngIf="message.jsonStr; else regularMessage">
+
+          <div class="message-text"><strong>{{ message.methodName }}</strong></div>
+          <pre class="code-block">{{ formatJson(message.jsonStr) }}</pre>
+
+          <!-- Execute button -->
+          <button class="execute-btn" (click)="executeJson( formatJson(message.jsonStr), message.methodName)">Execute</button>
+        </div>
+
+        <!-- Display regular message -->
+        <ng-template #regularMessage>
+          <div class="message-text">{{ message.text }}</div>
+        </ng-template>
+
+      </div>
+     </div>
+    </div>
+
+      <div class="chat-input-container">
+        <textarea
+          [(ngModel)]="query"
+          id="query"
+          placeholder="Type your message here..."
+          rows="3"
+          class="chat-input"
+        ></textarea>
+        <div class="button-container">
+          <button (click)="sendQuery()" class="chat-send-button">Send</button>
+          <button (click)="tools()" class="chat-tools-button">Tools</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+
+  </div>
+

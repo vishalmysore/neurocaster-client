@@ -1,59 +1,71 @@
-# Neurocaster
+# 🧠 **Neurocaster-Client - Angular-based Client for Model Integration Protocol (MIP)**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+**Neurocaster-Client** is an Angular-based application that interacts with **Model Integration Protocol (MIP)**, enabling users to **chat** with the system and **call tools** exposed via Spring Boot services. This client seamlessly integrates with MIP-powered services and facilitates dynamic interactions using WebSocket for real-time communication.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 **Features**
+- 💬 **Chat Functionality:** Engage in real-time chat with the system powered by MIP and Spring Boot services.
+- 🔧 **Tool Invocation:** Call Spring Boot services annotated with `@Agent` and `@Action` directly through the client interface.
+- ⚡ **Real-time Communication:** Uses WebSocket to handle chat and tool requests dynamically.
+
+---
+
+## ⚙️ **Setting Up Neurocaster-Client**
+
+### 📥 **Installation Steps**
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/neurocaster-client.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd neurocaster-client
+    ```
+
+3. Install the required dependencies:
+    ```bash
+    npm install
+    ```
+
+---
+
+### 🧠 **Running the Client**
+
+To run the Angular client, execute the following command:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+This will start the Angular development server. You can access the client at: http://localhost:4200
 
-## Code scaffolding
+💬 Chat with the System
+Once the client is running, you can initiate a chat with the system. Simply type your query in the chat interface, and the LLM will respond based on the available services exposed via MIP.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🔧 Call Tools
+The client allows you to invoke tools exposed by the Neurocaster backend. For example, if you have a service like @Action(description = "Customer repair service"), you can call it directly from the client interface.
 
-```bash
-ng generate component component-name
+Type in your query for the tool, such as:
+
+```  "Create a repair ticket for John Doe's laptop"
 ```
+The client will automatically map the request to the appropriate tool method based on the MIP-enabled backend.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+### Screenshots
 
-## Building
+![Connect](connect.png)
 
-To build the project run:
+![Chat](client2.png)
 
-```bash
-ng build
-```
+![Chat](client3.png)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+![Chat](client4.png)
 
-## Running unit tests
+![Chat](client5.png)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+![Chat](client6.png)
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

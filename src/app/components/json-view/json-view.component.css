@@ -1,0 +1,175 @@
+/* Overall Container */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-right: 2px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar label {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.sidebar input, .sidebar select {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.sidebar button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #45a049;
+}
+
+/* Main Content Area */
+.content {
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Chat Container */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 75%;
+  margin-bottom: 20px;
+  padding-right: 10px;
+}
+
+/* Chat Messages */
+.chat-message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  max-width: 70%;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background-color: #4caf50;
+  color: white;
+}
+
+.chat-message.bot {
+  align-self: flex-start;
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.message-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Chat Input Container */
+.chat-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+}
+
+/* Button Container */
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Common Style for Buttons */
+.chat-send-button,
+.chat-tools-button {
+  padding: 10px 20px;  /* Consistent padding */
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* Same font size */
+  width: 100%;  /* Ensure both buttons are the same width */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+.chat-send-button:hover,
+.chat-tools-button:hover {
+  background-color: #45a049; /* Darker shade on hover */
+}
+
+/* Specific Adjustments for Send Button */
+.chat-send-button {
+  font-size: 16px; /* Slightly larger font for 'Send' if you prefer */
+}
+
+/* Specific Adjustments for Tools Button */
+.chat-tools-button {
+  font-size: 14px; /* Ensure 'Tools' is the same size as the Send button */
+}
+
+
+/* Code Block */
+.code-block {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: "Courier New", monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Execute Button */
+.execute-btn {
+  background-color: #4CAF50;   /* Green button */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.execute-btn:hover {
+  background-color: #45a049;  /* Darker green on hover */
+}
