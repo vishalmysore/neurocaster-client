@@ -4,6 +4,10 @@
 
 ---
 
+## 📦 **Prerequisites**
+
+Server is here [Neurocaster-Server](
+
 ## 🚀 **Features**
 - 💬 **Chat Functionality:** Engage in real-time chat with the system powered by MIP and Spring Boot services.
 - 🔧 **Tool Invocation:** Call Spring Boot services annotated with `@Agent` and `@Action` directly through the client interface.
