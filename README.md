@@ -5,8 +5,9 @@
 ---
 
 ## 📦 **Prerequisites**
-
-Server is here [Neurocaster-Server](
+Tools4AI is here [Tools4AI](https://github.com/vishalmysore/Tools4AI)  
+Server is here [Neurocaster-Server](https://github.com/vishalmysore/neurocaster-server)   
+Client is here [Neurocaster-Client](https://github.com/vishalmysore/neurocaster-client)    
 
 ## 🚀 **Features**
 - 💬 **Chat Functionality:** Engage in real-time chat with the system powered by MIP and Spring Boot services.
