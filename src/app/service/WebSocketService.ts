@@ -10,6 +10,11 @@ export class WebSocketService {
 
   constructor() {}
 
+
+
+
+
+
   // Establish WebSocket connection
   connect(url: string): Observable<any> {
     if (!this.socket || this.socket.readyState !== WebSocket.OPEN) {
@@ -18,6 +23,8 @@ export class WebSocketService {
       // Handle incoming messages
       this.socket.onmessage = (event) => {
         try {
+          console.log(event.data);
+
           const response = JSON.parse(event.data);  // Parse the JSON response
           console.log("here i am "+response);
           this.responseSubject.next(response);  // Emit the response

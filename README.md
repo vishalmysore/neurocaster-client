@@ -1,6 +1,21 @@
 # 🧠 **Neurocaster-Client - Angular-based Client for Model Integration Protocol (MIP)**
 
-**Neurocaster-Client** is an Angular-based application that interacts with **Model Integration Protocol (MIP)**, enabling users to **chat** with the system and **call tools** exposed via Spring Boot services. This client seamlessly integrates with MIP-powered services and facilitates dynamic interactions using WebSocket for real-time communication.
+**Neurocaster-Client** is an **LLM-independent, Angular-based application** designed for seamless interaction with multiple LLMs, offering **greater control and extensibility**.
+
+It supports **dynamic chat** and **tool invocation** by integrating with **Model Integration Protocol (MIP)**. The client can work with various LLMs for both **conversational AI** and executing tools exposed via **Spring Boot services** or other backends.
+
+## Features
+- **LLM Independence**: Works with multiple LLMs for flexible conversational AI and tool invocation.
+- **Model Integration Protocol (MIP)**: Seamlessly integrates with services powered by MIP.
+- **Dynamic Chat**: Engage in real-time conversations powered by LLMs.
+- **Tool Invocation**: Execute tools exposed via Spring Boot services or other backends. Call Spring Boot services annotated with `@Agent` and `@Action` directly through the client interface.
+- **Extensibility**: Modular architecture allows easy customization and addition of new capabilities.
+- **Fine-Grained Control**: Provides enhanced control over tool execution and LLM interactions.
+
+## Benefits
+- **Modular and Extensible Architecture**: Easy to customize and extend with new functionalities.
+- **Adaptable to Diverse Workflows**: Suitable for various use cases, from conversational AI to complex tool integrations.
+- **Seamless LLM Interactions**: Integrates with multiple LLMs for powerful AI-driven workflows.
 
 ---
 
@@ -9,12 +24,7 @@ Tools4AI is here [Tools4AI](https://github.com/vishalmysore/Tools4AI)
 Server is here [Neurocaster-Server](https://github.com/vishalmysore/neurocaster-server)   
 Client is here [Neurocaster-Client](https://github.com/vishalmysore/neurocaster-client)    
 
-## 🚀 **Features**
-- 💬 **Chat Functionality:** Engage in real-time chat with the system powered by MIP and Spring Boot services.
-- 🔧 **Tool Invocation:** Call Spring Boot services annotated with `@Agent` and `@Action` directly through the client interface.
-- ⚡ **Real-time Communication:** Uses WebSocket to handle chat and tool requests dynamically.
 
----
 
 ## ⚙️ **Setting Up Neurocaster-Client**
 

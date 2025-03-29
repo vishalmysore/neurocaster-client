@@ -1,13 +1,63 @@
+<div class="title-section">
+  <h1>Neurocaster - LLM Independent Tools Integration</h1>
+</div>
 <div class="container">
+
   <div class="sidebar">
-    <label for="serverUrl">Server URL:</label>
+    <label for="serverUrl">Spring Server URL:</label>
     <input [(ngModel)]="serverUrl" id="serverUrl" placeholder="Enter server URL" />
     <button (click)="connect()">Connect to Server</button>
 
-    <label for="groupSelect">Select Group:</label>
+    <label for="groupSelect">Select Tool Group:</label>
     <select [(ngModel)]="selectedGroup" (change)="loadActions()" id="groupSelect">
       <option *ngFor="let group of groups" [value]="group">{{ group }}</option>
     </select>
+    <div class="models-section">
+      <h3>Inference Model:</h3>
+      <div *ngFor="let model of models">
+        <input
+          type="radio"
+          name="inferenceModel"
+          [(ngModel)]="selectedInferenceModel"
+          [value]="model.modelName"
+          [disabled]="model.modelName.startsWith('not configured')"
+        />
+        <label
+          [class.disabled]="model.modelName.startsWith('not configured')"
+        >
+          {{ model.modelName }} ({{ model.modelType }})
+        </label>
+      </div>
+    </div>
+
+    <!-- Voting Models with Sliders -->
+    <div class="voting-section">
+      <h3>Voting Models:</h3>
+      <div *ngFor="let model of models" class="voting-model">
+        <input
+          type="checkbox"
+          [(ngModel)]="selectedVotingModels[model.modelName]"
+          [disabled]="model.modelName.startsWith('not configured')"
+        />
+        <label
+          [class.disabled]="model.modelName.startsWith('not configured')"
+        >
+          {{ model.modelName }} ({{ model.modelType }})
+        </label>
+
+        <!-- Slider for weight adjustment -->
+        <input
+          type="range"
+          min="0"
+          max="100"
+          [value]="modelWeights[model.modelName]"
+          [disabled]="model.modelName.startsWith('not configured')"
+          (input)="updateWeight(model.modelName, $event)"
+        />
+        <span>{{ modelWeights[model.modelName] }}%</span>
+      </div>
+    </div>
+
   </div>
 
   <div class="content">

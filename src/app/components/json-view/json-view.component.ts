@@ -12,14 +12,21 @@ import { WebSocketService } from '../../service/WebSocketService';
   styleUrls: ['./json-view.component.css']
 })
 export class JsonViewComponent {
-  serverUrl: string = 'http://localhost:8081/actuator/tools4ai-tools';  // Default server URL
+  serverUrl: string = 'http://localhost:8081';  // Default server URL
+  toolsUrl: string = `${this.serverUrl}/actuator/tools4ai-tools`;  // Default server URL
+  modelsUrl: string = `${this.serverUrl}/actuator/tools4ai-models`;
   groups: string[] = [];
   selectedGroup: string = 'ALL';
   groupedActions: { [key: string]: any[] } = {};
   actions: any[] = []; // Holds the currently selected actions
   query: string = ''; // The user's query for the chatbox
   chatMessages: { sender: string, text: string ,jsonStr: string, methodName: string}[] = []; // Holds chat messages (query and response)
+  models: any[] = []; // Stores the models received from the API
+  selectedInferenceModel: string = '';
 
+  // Voting Models and Weightages
+  selectedVotingModels: { [key: string]: boolean } = {};  // Checkboxes for voting models
+  modelWeights: { [key: string]: number } = {};
   constructor(private http: HttpClient, private webSocketService: WebSocketService) {}
 
   // Connect to server and fetch all groups and actions
@@ -42,9 +49,9 @@ export class JsonViewComponent {
       return;
     }
 
-    this.http.get<any[]>(this.serverUrl).subscribe(
+    this.http.get<any[]>(this.toolsUrl).subscribe(
       (data) => {
-        console.log('Raw Data:', data);
+        console.log('Raw Data tools:', data);
 
         // Group actions by `actionGroup`
         this.groupedActions = data.reduce((acc, action) => {
@@ -67,8 +74,32 @@ export class JsonViewComponent {
         alert('Failed to connect to server.');
       }
     );
-  }
 
+    this.http.get<any[]>(this.modelsUrl).subscribe(
+      (data) => {
+        console.log('Raw Data:', data);
+        this.models = data;
+
+        // Initialize voting models and weights
+        this.models.forEach(model => {
+          this.selectedVotingModels[model.modelName] = false;  // Default unchecked
+          this.modelWeights[model.modelName] = 50;             // Default weight to 50
+        });
+
+        // Set the first model as the default inference model
+        if (this.models.length > 0) {
+          this.selectedInferenceModel = this.models[0].modelName;
+        }
+      },
+      (error) => {
+        console.error('Error connecting to server:', error);
+        alert('Failed to connect to server.');
+      }
+    );
+  }
+  updateWeight(modelName: string, event: any) {
+    this.modelWeights[modelName] = event.target.value;
+  }
   // When the group changes, filter and display actions
   loadActions() {
     if (this.selectedGroup === 'ALL') {
